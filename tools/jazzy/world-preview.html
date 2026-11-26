@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JAZZY / A Little World of Sound</title>
+<style>
+:root{color-scheme:dark;--base:#151714;--panel:#1d201a;--line:#3f4338;--ink:#efefe3;--muted:#b8bdac;--lime:#e4e97e;--fire:#ff825f}
+*{box-sizing:border-box}body{margin:0;background:var(--base);color:var(--ink);font:14px/1.6 -apple-system,BlinkMacSystemFont,sans-serif}
+main{max-width:1130px;margin:auto;padding:42px 24px 64px}
+header{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid var(--line);padding-bottom:18px;gap:16px}
+h1{font:650 clamp(38px,7.5vw,80px)/.95 -apple-system,BlinkMacSystemFont,sans-serif;margin:8px 0 0;letter-spacing:-.083em}
+.kicker,.mono,button,.engine b{font-family:ui-monospace,SFMono-Regular,monospace}
+.kicker{font-size:11px;color:var(--lime);letter-spacing:.16em}
+.meta{text-align:right;color:var(--muted);font-size:11px;white-space:nowrap}
+.layout{display:grid;grid-template-columns:minmax(185px,235px) minmax(282px,1fr) minmax(205px,235px);gap:24px;margin-top:24px}
+#engines{display:grid;gap:2px;max-height:620px;overflow:auto;align-content:start;padding-right:6px}
+button{color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:8px 10px;cursor:pointer;white-space:nowrap}
+button:hover{border-color:var(--muted)}button[aria-pressed=true]{background:var(--lime);color:#191c12;border-color:var(--lime)}button:focus-visible,input:focus-visible{outline:2px solid var(--fire);outline-offset:2px}
+.engine{display:flex;align-items:center;gap:9px;text-align:left;padding:6px 8px;border-color:transparent}
+.engine span{opacity:.7;font-size:10px}.engine b{font-size:12px}.engine i{font-style:normal;margin-left:auto;font-size:10px;opacity:.8}
+.stage{background:var(--panel);border:1px solid var(--line);padding:16px;min-width:0}
+.stagebar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;color:var(--muted);font-size:11px;gap:10px}
+.display{min-height:270px;display:grid;place-items:center;background:#11130f;border:1px solid #36392e;overflow:auto;padding:12px}
+canvas{display:block;width:240px;height:240px;background:#0c1012;image-rendering:pixelated}
+canvas[data-zoom="2"]{width:480px;height:480px;justify-self:start}
+.controls{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:12px}
+.controls button{padding:9px 3px;font-size:12px}.scrub{display:flex;align-items:center;gap:10px;margin-top:12px}
+input[type=range]{min-width:0;flex:1;accent-color:var(--lime);cursor:ew-resize}
+output{min-width:65px;text-align:right;font-size:11px}
+.detail{padding-top:6px}
+h2{font-size:25px;line-height:1.25;letter-spacing:-.05em;margin:10px 0 8px}
+.detail p{margin:7px 0 14px;color:var(--muted);word-break:keep-all}.detail dl{margin:0}.detail dt{color:var(--lime);margin-top:12px;font-size:12px}.detail dd{margin:2px 0 0;line-height:1.55;word-break:keep-all}
+.utility{margin-top:26px;padding:12px 16px;border:1px solid var(--line);background:var(--panel)}.utility summary{cursor:pointer}.utility img{max-width:100%;image-rendering:pixelated;display:block;margin-top:12px}
+footer{border-top:1px solid var(--line);margin-top:24px;padding-top:16px;color:var(--muted);font-size:12px}
+@media(max-width:880px){.layout{grid-template-columns:160px 1fr}.detail{grid-column:2}.display{justify-items:center}#engines{max-height:440px}}
+@media(max-width:560px){main{padding:24px 14px 40px}.layout{display:flex;flex-direction:column;gap:14px}#engines{grid-template-columns:repeat(2,1fr);max-height:118px}.meta{display:none}.detail{padding:0}}
+</style>
+</head>
+<body>
+<main>
+<header><div><div class="kicker">JAZZY / MOTION STUDY 01</div><h1>A little world<br>of sound.</h1></div><div class="meta mono">30 MACHINES<br>FM-1 / 240 × 240<br>DESIGN PREVIEW</div></header>
+<div class="layout">
+<nav id="engines" aria-label="30개 엔진"></nav>
+<section class="stage" aria-label="LCD 미리보기">
+ <div class="stagebar mono"><span id="screenLabel">LCD / 240 × 240</span><button type="button" id="theme" aria-pressed="false">DARK</button><button type="button" id="zoom" aria-pressed="false">2× 확대</button></div>
+ <div class="display"><canvas id="lcd" width="240" height="240" data-zoom="1" role="img" aria-label="FM-1 LCD 화면"></canvas></div>
+ <div class="controls" id="modes" role="group" aria-label="입력 시나리오"><button type="button">대기</button><button type="button">노브</button><button type="button">코드</button><button type="button">리듬</button></div>
+ <div class="scrub"><button type="button" id="play">일시정지</button><input type="range" id="scrub" min="0" value="0" aria-label="프레임"><output class="mono" for="scrub" id="value"></output></div>
+</section>
+<aside class="detail"><span class="kicker" id="position"></span><h2 id="title"></h2><p id="summary"></p><dl><dt class="mono" id="knobLabel"></dt><dd id="knobDesc"></dd><dt class="mono">02 / CHORD</dt><dd id="chordDesc"></dd><dt class="mono">03 / RHYTHM</dt><dd id="rhythmDesc"></dd></dl></aside>
+</div>
+<details class="utility" id="utilities"><summary>FX · 시퀀서 · 믹서 · 설정 화면 보기</summary><img id="utilImage" alt="JAZZY 작업 화면 7개"></details>
+<footer>펌웨어 UI 렌더러가 그린 240×240 원본 픽셀입니다. 입력을 재현한 무음 시안이며 실기기에 설치할 파일은 아닙니다. 노브 모드에서는 슬라이더를 직접 움직여 비교할 수 있습니다.</footer>
+</main>
+<script>
+const worlds=/* DATA */[], utility=/* UTILITY */[];
+const by=id=>document.getElementById(id), modes=['대기','노브','코드','리듬'];
+const nav=by('engines'), controls=[...by('modes').children], lcd=by('lcd'), ctx=lcd.getContext('2d');
+const scrub=by('scrub'), play=by('play');ctx.imageSmoothingEnabled=false;
+let active=worlds.findIndex(w=>w.id===16), mode=3, theme=0, frame=0, image=null, token=0, playing=!matchMedia('(prefers-reduced-motion: reduce)').matches, time=0;
+function draw(){
+ if(!image)return;
+ let n=worlds[active].frames[mode];let i=Math.min(n-1,Math.floor(frame));
+ if(mode===1 && playing)i=24-Math.abs((Math.floor(frame)%48)-24);
+ ctx.drawImage(image,(i%8)*240,Math.floor(i/8)*240,240,240,0,0,240,240);
+ scrub.value=i;
+ const k=worlds[active].knob;
+ by('value').textContent=mode===1?String(k.min+Math.round((k.max-k.min)*i/24)):String(i+1).padStart(2,'0')+' / '+n;
+}
+function run(on){playing=on;play.textContent=on?'일시정지':'재생';play.setAttribute('aria-pressed',String(on));}
+function select(index,nextMode=mode){
+ active=index;mode=nextMode;frame=0;
+ const w=worlds[index];const request=++token;
+ for(const [i,b] of Array.from(nav.children).entries())b.setAttribute('aria-pressed',String(i===active));
+ controls.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===mode)));
+ for(const [key,value] of Object.entries({position:String(index+1).padStart(2,'0')+' / 30 · '+w.name,title:w.title,summary:w.summary,knobLabel:'01 / '+w.knob.label,knobDesc:w.reactions[0],chordDesc:w.reactions[1],rhythmDesc:w.reactions[2]}))by(key).textContent=value;
+ lcd.setAttribute('aria-label',w.name+' '+modes[mode]+' 240×240 화면');
+ scrub.max=w.frames[mode]-1;scrub.value=0;scrub.setAttribute('aria-label',mode===1?w.knob.label:'프레임');
+ if(mode===1)run(false);
+ image=null;ctx.clearRect(0,0,240,240);
+ return new Promise((ok,fail)=>{
+  const img=new Image();
+  img.onload=()=>{if(request===token){image=img;draw()}ok()};
+  img.onerror=fail;img.src='data:image/webp;base64,'+w.atlases[theme][mode];
+ });
+}
+worlds.forEach((w,i)=>{
+ const b=document.createElement('button');b.className='engine';b.type='button';
+ for(const [tag,txt] of [['span',String(i+1).padStart(2,'0')],['b',w.name],['i','›']]){const el=document.createElement(tag);el.textContent=txt;b.append(el)}
+ b.onclick=()=>select(i);nav.append(b);
+});
+controls.forEach((b,i)=>b.onclick=()=>{run(i!==1);select(active,i)});
+play.onclick=()=>{if(mode===1&&!playing&&frame===24)frame=0;run(!playing)};
+scrub.oninput=()=>{run(false);frame=Number(scrub.value);draw()};
+function showUtilities(){if(by('utilities').open)by('utilImage').src=utility[theme]}
+by('utilities').ontoggle=showUtilities;
+by('theme').onclick=()=>{
+ theme^=1;by('theme').textContent=theme?'LIGHT':'DARK';
+ by('theme').setAttribute('aria-pressed',String(!!theme));showUtilities();select(active);
+};
+by('zoom').onclick=()=>{
+ const on=lcd.dataset.zoom==='1';lcd.dataset.zoom=on?'2':'1';
+ by('zoom').setAttribute('aria-pressed',String(on));by('zoom').textContent=on?'1× 원본':'2× 확대';
+};
+function tick(ms){if(playing&&image&&ms-time>=50){frame=(frame+Math.max(1,Math.floor((ms-time)/50)))%(mode===1?48:worlds[active].frames[mode]);draw()}if(ms-time>=50)time=ms;requestAnimationFrame(tick)}
+select(active);requestAnimationFrame(tick);
+</script>
+</body>
+</html>

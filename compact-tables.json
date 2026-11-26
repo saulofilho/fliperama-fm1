@@ -1,0 +1,22 @@
+{
+  "VCF": {
+    "values": 4096,
+    "original_bytes": 8192,
+    "packed_bytes": 1440
+  },
+  "EXP": {
+    "values": 1025,
+    "original_bytes": 4100,
+    "packed_bytes": 2029
+  },
+  "M2": {
+    "values": 769,
+    "original_bytes": 3076,
+    "packed_bytes": 1623
+  },
+  "KW": {
+    "values": 768,
+    "original_bytes": 3072,
+    "packed_bytes": 1610
+  }
+}

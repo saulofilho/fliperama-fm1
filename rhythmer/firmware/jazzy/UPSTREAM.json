@@ -1,0 +1,191 @@
+{
+  "commits": {
+    "hortator": "c8cca2ce9a6a1ba5a055ef3bd4aadc9ef5237bb4",
+    "melodee": "165d177a425944f3d30b0b669255a6ed0050c3a5",
+    "obervave": "792535d23ef4265475b1c2f9895ca30e857fe596",
+    "fm106": "b795c3d9431c4cd552d5951f70b549eeff5c288d",
+    "cs1": "5dce8fadd3aa86cf47a3290289ee1c10b7c102e4",
+    "frodhes": "a66e6e28583c9bc8be207d90f6e451eeca14d8dc",
+    "fmini": "54818a171f20df9efbc5a21db1fa21a7ec39881c",
+    "kwasub": "2be6305439e571b02b3a7d1e19a4e2d61ddf9245",
+    "s1vave": "8588da5064fe4e8a0d10fd93be6e68ea50509b8d",
+    "saadet": "c83b05f5377703c30d649e7f2b39181c371a2a11"
+  },
+  "notes": [
+    "K-WASUB catalog tag v1.1.01 unavailable; pinned source SHA is authoritative.",
+    "Acid and MD adapters retain the existing RHYTHMER Hortator source pin, documented in their source headers."
+  ],
+  "files": {
+    "compact_tables.h": "d5346b08c03fd57317c0a4d7745832d167d569224c74b999ce5807a8201fa65f",
+    "eng_fmini_filter.h": "78164f1ebbf66cb94de04e3dd1d64f5793156742071e3ad6a520d547e75f03f2",
+    "eng_fmini_presets.h": "8853a180a3cc5f4d407969d40069cafd50dfe7434a9ae12a9571da3d691fe777",
+    "factory_meta.h": "9c4ee410b74b6db08c38fb6a07a25fb67a1b2e2e2a1bcfaa3c06f0a1e157b4ff",
+    "factory_projection.h": "fd607022dc0e3abb7238099c40985cf0eb509792716ee6b0f3dfb0c9a5ae528f",
+    "fm106_osc.h": "a5d22bcb6ba3ef5c29b0544d9e77b025c8e8df2b019dc2cc17ac9459fa6b71cc",
+    "fm106_tables.h": "b220f94606b3dbef13f4db92ef16d873d16c76751f3805286fcdc45d105f441d",
+    "fm106_vcf.h": "98a7e983cbf7d36b8c9e44abd905e8b70640ff3119426c36e65d2e6baa9bfb84",
+    "fmini.c": "b4b36efba820042f4d728b7f1fc70c31314abc1770c80d4a944c66b7d6d7ac0c",
+    "fmini_compact.h": "b08e64aeadbd8904f0a425eb2bc3dc7a215c0cd3f854441228f8f3362fba3bdb",
+    "fmini_unpack.h": "7dad8fa59a05d5402d2f03d110d42f3e3f429c4a0f1e7cc2a1a2a7dd0501a641",
+    "frodhes.h": "b55e3a8390686f3df11a7af9297eee56c3fe165550990dc5c9738c3a1e61e4c1",
+    "hydra_core.h": "06d701013a6e5e16b7828f97bca13b4da99a66fb2aaf11c6b3bdf452f21f5643",
+    "hydra_expect.h": "8d2301efe9d708c2d9271b3b1321be35ce6427f73af1c2b5c0f2696049d1e421",
+    "hydra_factory.h": "5cee5f31d1cf0f9a5d87733fabf62e3d8559ddb13f260fe64d3e3d309ea643e5",
+    "hydra_patch.h": "663ab8b0f499c291d692ce27db9231ebf482fc9e35ecb4d95db752d80f661d06",
+    "hydra_types.h": "f25da60274479e89a45fb5730af592f9b55b208c5125221c2f800d7a6ebfa5ed",
+    "hydra_waves.h": "91211bd8fd2d68a7161e2e385ba9f0ee429ff47da993285d34717a20f3f9ab82",
+    "jc_dsp.h": "8675298ad359ef20fc4173c3dea5d63de224b0873e71c41024faf37da719ead9",
+    "jo_dsp.h": "0fbf82327250321d119e183ec7f37a145e37e6006ae8df9eaef77ed74787f1ef",
+    "kwasub.h": "e6c21b35904a8a0859c5d912f522a3b857f330eb24e9275763c439dec48f6a7c",
+    "licenses/cs1/LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "licenses/cs1/LICENSING.md": "1690dc46385cf081d985a63291ab042f9f97df2e835e834d19f723fd80d7b440",
+    "licenses/fm106/LICENSE": "e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052",
+    "licenses/fm106/LICENSING.md": "005403f6cd8e09ea6e6677762e074d865be7fa7d3b92238f07384321b1d3efbf",
+    "licenses/fmini/LICENSE": "f891e12d75c1d914547a88ca8914530c7c89d5088e0adac37f06da85439be987",
+    "licenses/fmini/LICENSING.md": "d68d9e125b9eb22501cf8209aee1b247c102d83de3d8a181a4335ea03d8ecc5e",
+    "licenses/frodhes/LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "licenses/frodhes/LICENSING.md": "013135fbd95847683beeb8f0840468be2c1e1013befe8cd3f6a957ecf62835d0",
+    "licenses/hortator/LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "licenses/hortator/LICENSING.md": "7cd553a6dfade7ed443627685a8754578aae7d25f34579c7211bba82998f0258",
+    "licenses/kwasub/LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "licenses/kwasub/LICENSING.md": "8d4351f45d416f8a6e7a2d3492e71695af6871c8d081137efa8f12f0c67fc406",
+    "licenses/melodee/BSD-3-Clause-uPD933.txt": "57747baee9c753ad902ebfcd95a50b131b6d3cc967045d87b69169c807bcde4a",
+    "licenses/melodee/LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "licenses/melodee/LICENSING.md": "02e1abe387f5c5c2de7f51da9d1a64bda9d8448f6942713c39f5f51261ea2b1e",
+    "licenses/obervave/LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "licenses/obervave/LICENSING.md": "def0911772fbd7750f52da79ac90314159259a4791aa3ca30f79fc295b4506f7",
+    "licenses/s1vave/LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "licenses/s1vave/LICENSING.md": "f9c8e41f0364e51655da308621c06bb49825b0a410b3261d0db3bbc775d30d32",
+    "licenses/s1vave/TRADEMARK.md": "ccc6900f701271b4c0f4ff5e05547813d8848dbbb0d1ffe7c5ce3b09b73afec9",
+    "licenses/saadet/LICENSE": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+    "licenses/saadet/LICENSING.md": "839b38ad9a818cedc013ce6f49588114801357afc61c9e5e8de1f25e6cc308bd",
+    "mel_cz_wave.h": "0b01f417f5663745c7b0eaf98b74af9437c5efd6d72a523f9241b02589477ff2",
+    "mel_fastmath.h": "a25aff7e264c2a7bb9110ee5f5eb7c6fce66d4f7f29751ba07b35d2fd2aab47a",
+    "mel_prophet.h": "8ba33ae7515365f5c16b9862951a206c819341af5df7f8ef4765d30a92f054ea",
+    "melodee_trio.c": "45afbc6020b23f975632de6e40f0db098314411d49fc36317870476e18c06773",
+    "objects.h": "4081911b131e7c6ec173af627cece330b68b2c661831a0a7bd0ad39f0983c04e",
+    "pets.h": "db28e97b7764d1d2b61a7bbf4587813d8ee8b0737e15f1a8c5974458e2fe8b1e",
+    "s1_curve.h": "01aa6ecf185f1ab2b088cb00c9a04df5852cab0ae074937a3f7e803b68b301f2",
+    "s1_dsp.h": "aa3330ba65d934cfed37c741322957f92851ca6ad50857466f6042bcc08ff5eb",
+    "s1_factory.h": "54878b141c9e625fdaa187a11ed8c3e7156950550d730c91f47a8e7fd9bd4a75",
+    "synth_assets.h": "431fe6dcdfc2946cde4429a15cb67f0fc9591172efb009dcc587b2ce64a55283",
+    "wave_curated.h": "5ebdeb18183e7e2d8f62e241d4185f3e169cb855d4339480bbe7eb596631bacf"
+  },
+  "priority_adaptation": {
+    "source": "Melodee commit 165d177a425944f3d30b0b669255a6ed0050c3a5",
+    "CZ": "Native CZ phase functions, shared host sine/ENV; 7 wave choices, 6 windows, dual line, ring. Original 8-stage native EG/editor/banks not imported.",
+    "Prophet": "Native Melodee BLEP/triangle/sync/poly-mod/TPT sample kernel, common host ENV/modulation, 1x sample rate, 3 voices. Shared Q24 exp table and interpolated 513-entry tanh; no upstream scheduler, editor or runtime raw program bank.",
+    "presets": "24 each CZ and Prophet; FM-106 24; FMini 200. All original-based standardized projections."
+  },
+  "curated_wave": {
+    "frames": [
+      {
+        "bank": 1,
+        "frame": 2
+      },
+      {
+        "bank": 2,
+        "frame": 0
+      },
+      {
+        "bank": 3,
+        "frame": 1
+      },
+      {
+        "bank": 3,
+        "frame": 4
+      },
+      {
+        "bank": 2,
+        "frame": 4
+      },
+      {
+        "bank": 7,
+        "frame": 2
+      },
+      {
+        "bank": 7,
+        "frame": 4
+      },
+      {
+        "bank": 6,
+        "frame": 3
+      }
+    ],
+    "mip_levels": 2,
+    "table_bytes": 8192,
+    "original_table_bytes": 65536,
+    "preset_mapping": [
+      {
+        "name": "NIGHT BUS",
+        "source_bank": 1,
+        "source_scan": 30,
+        "selected_scan": 0,
+        "waveform_rms_error": 4270.34
+      },
+      {
+        "name": "YOI TALKER",
+        "source_bank": 3,
+        "source_scan": 10,
+        "selected_scan": 33,
+        "waveform_rms_error": 4021.31
+      },
+      {
+        "name": "SYNC RIPPER",
+        "source_bank": 7,
+        "source_scan": 40,
+        "selected_scan": 88,
+        "waveform_rms_error": 3685.27
+      },
+      {
+        "name": "HOLLOW TUBE",
+        "source_bank": 2,
+        "source_scan": 70,
+        "selected_scan": 72,
+        "waveform_rms_error": 864.24
+      },
+      {
+        "name": "DIGI BITE",
+        "source_bank": 6,
+        "source_scan": 60,
+        "selected_scan": 127,
+        "waveform_rms_error": 934.8
+      },
+      {
+        "name": "NEURO STAB",
+        "source_bank": 7,
+        "source_scan": 70,
+        "selected_scan": 107,
+        "waveform_rms_error": 2951.34
+      },
+      {
+        "name": "UKG ORGAN",
+        "source_bank": 1,
+        "source_scan": 40,
+        "selected_scan": 1,
+        "waveform_rms_error": 855.74
+      },
+      {
+        "name": "YOI RIDDIM",
+        "source_bank": 3,
+        "source_scan": 64,
+        "selected_scan": 54,
+        "waveform_rms_error": 1213.52
+      },
+      {
+        "name": "WAVE MORPH",
+        "source_bank": 2,
+        "source_scan": 0,
+        "selected_scan": 18,
+        "waveform_rms_error": 78.88
+      }
+    ]
+  },
+  "factory_projection": {
+    "source_programs": 811,
+    "selected_programs": 368,
+    "rom_bytes": 11691,
+    "curation": "Musical category balance followed by max-min timbre coverage; FMini all 200, WAVE all 9",
+    "notes": "Original sounds projected to host controls, not identical native firmware programs. Full source projection/approximation notes in preset-projections.json."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "tail_offset": 73728,
+  "tail_bytes_per_slot": 8192,
+  "data_bytes": 16090,
+  "offsets": {
+    "JH_FACTORY": 0,
+    "JS_CFG": 2304,
+    "JS_WAVE": 2880,
+    "JS_DRAW": 3008,
+    "JS_CHOP": 3488,
+    "JH_WAVE_PACK": 3712,
+    "JF_PACK": 13868
+  },
+  "hydra_pack_bytes": 10153,
+  "payload_crc32": [
+    801483625,
+    431358471
+  ],
+  "pcm_payload_unchanged": true
+}

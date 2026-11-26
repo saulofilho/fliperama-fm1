@@ -1,0 +1,1 @@
+Current SIX firmware integration. See ../README-SIX.md and ../docs/six/CURRENT-VALIDATION.md. Upstream JIANT: 3206468966856c98d4712c9f366621ae897246b8. Local only; physical hardware is not yet validated.

@@ -1,0 +1,104 @@
+{
+  "frames": [
+    {
+      "bank": 1,
+      "frame": 2
+    },
+    {
+      "bank": 2,
+      "frame": 0
+    },
+    {
+      "bank": 3,
+      "frame": 1
+    },
+    {
+      "bank": 3,
+      "frame": 4
+    },
+    {
+      "bank": 2,
+      "frame": 4
+    },
+    {
+      "bank": 7,
+      "frame": 2
+    },
+    {
+      "bank": 7,
+      "frame": 4
+    },
+    {
+      "bank": 6,
+      "frame": 3
+    }
+  ],
+  "mip_levels": 2,
+  "table_bytes": 8192,
+  "original_table_bytes": 65536,
+  "preset_mapping": [
+    {
+      "name": "NIGHT BUS",
+      "source_bank": 1,
+      "source_scan": 30,
+      "selected_scan": 0,
+      "waveform_rms_error": 4270.34
+    },
+    {
+      "name": "YOI TALKER",
+      "source_bank": 3,
+      "source_scan": 10,
+      "selected_scan": 33,
+      "waveform_rms_error": 4021.31
+    },
+    {
+      "name": "SYNC RIPPER",
+      "source_bank": 7,
+      "source_scan": 40,
+      "selected_scan": 88,
+      "waveform_rms_error": 3685.27
+    },
+    {
+      "name": "HOLLOW TUBE",
+      "source_bank": 2,
+      "source_scan": 70,
+      "selected_scan": 72,
+      "waveform_rms_error": 864.24
+    },
+    {
+      "name": "DIGI BITE",
+      "source_bank": 6,
+      "source_scan": 60,
+      "selected_scan": 127,
+      "waveform_rms_error": 934.8
+    },
+    {
+      "name": "NEURO STAB",
+      "source_bank": 7,
+      "source_scan": 70,
+      "selected_scan": 107,
+      "waveform_rms_error": 2951.34
+    },
+    {
+      "name": "UKG ORGAN",
+      "source_bank": 1,
+      "source_scan": 40,
+      "selected_scan": 1,
+      "waveform_rms_error": 855.74
+    },
+    {
+      "name": "YOI RIDDIM",
+      "source_bank": 3,
+      "source_scan": 64,
+      "selected_scan": 54,
+      "waveform_rms_error": 1213.52
+    },
+    {
+      "name": "WAVE MORPH",
+      "source_bank": 2,
+      "source_scan": 0,
+      "selected_scan": 18,
+      "waveform_rms_error": 78.88
+    }
+  ]
+}

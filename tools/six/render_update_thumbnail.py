@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+"""Version-led update thumbnail, using actual firmware UI."""
+import render_update_media as m
+m.load()
+im=m.bg(3840,2160)
+m.text(im,(135,90),'R / OS',43,True)
+m.text(im,(2470,95),'FM-1 / CUSTOM FIRMWARE',44,True,m.GRAY)
+m.fit(im,(120,235),'RHYTHMER',2250,345)
+m.text(im,(140,655),'v0.1.1-beta3',154)
+d=m.ImageDraw.Draw(im);d.rectangle((130,875,1940,1150),fill=m.INK)
+m.text(im,(170,898),'UPDATE',235,color=m.BG)
+m.text(im,(145,1235),'WHAT IS NEW',39,True,m.GRAY)
+for i,s in enumerate(['SWAP ONE DRUM SOUND','TARGET GEN + BREAK GEN','10 NEW GENRES','UPLOAD YOUR OWN BREAKS']):
+ y=1345+i*140;d.rectangle((145,y+15,164,y+34),fill=m.INK)
+ m.fit(im,(205,y),s,1770,82)
+m.glyphs(im,2230,280,1450,190,.65)
+m.text(im,(2110,600),'DRUM / INDIVIDUAL SOUND',33,True,m.GRAY)
+m.screen(im,'drum-sound',(2110,670),740,.2)
+m.text(im,(2970,1030),'GEN / TARGET BREAK',33,True,m.GRAY)
+m.screen(im,'gen-break',(2970,1100),740,.3)
+m.text(im,(2110,1515),'55 MD SOUNDS',45,True)
+m.text(im,(2110,1590),'19 DRUM KITS',45,True)
+m.text(im,(2110,1665),'+4 ACID PRESETS',40,True,m.GRAY)
+m.line(im,[(135,2000),(3710,2000)])
+m.text(im,(140,2040),'JAZZY RHYTHMER / BUILT ON JIANT',34,True,m.GRAY)
+m.text(im,(2440,2040),'DEVELOPMENT BETA',39,True,m.GRAY)
+m.save(im,'YouTube-Update-v0.1.1-beta3-3840x2160',(1280,720))
+print(m.O/'YouTube-Update-v0.1.1-beta3-3840x2160-upload.jpg')
