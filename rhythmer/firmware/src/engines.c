@@ -85,41 +85,22 @@ static const engine_t ENG_EMPTY={
 #include "eng_priority.c"
 #include "eng_expansion.c"
 #include "eng_hydra_jazzy.c"
-static const engine_t *const ENGINES[NENGINES] = {
+static const engine_t *const ENGINES[NENGINES] = {   /* FLIPERAMA: only ANALOG FM6 BREAK ACID EMPTY HORT stay */
     &ENG_ANALOG,                 /* 0 */
 #if FELUCCA_FM4
     &ENG_DIGITAL,                /* 1 (ENGI_DIGITAL) */
 #else
-    &ENG_FM4_GONE,               /* 1: reserved (DIGITAL, retired: its sounds convert to FM6, fm4_convert.c) */
+    &ENG_FM4_GONE,               /* 1: reserved */
 #endif
-    &ENG_PHASE,                  /* 2 */
-    &ENG_LOFI,                   /* 3 */
-    &ENG_GONE,                   /* 4: reserved (SAMPLE, retired in JIANT) */
-    &ENG_GONE,                /* 5 VOICE (eng_formant.c: "voice" is a sounding note in voice.c) */
-    &ENG_GONE,                   /* 6: reserved (TRIO, folded into ANALOG in JIANT 0.4: core.h analog_from_trio) */
-    &ENG_WHEEL,                  /* 7 */
-    &ENG_GONE,                   /* 8: reserved (GRAIN, retired in JIANT) */
-    &ENG_GONE,                   /* 9: reserved (PHYS, retired in TONIC: its sounds play as ANALOG) */
-    &ENG_GONE,                   /* 10: retired JIANT kit */
-    &ENG_GONE,                  /* 11 */
-    &ENG_FM6,                    /* 12 (ENGI_FM6) */
-    &ENG_GONE,                   /* 13: reserved (SLICE, retired in JIANT) */
-    &ENG_GONE,                 /* 14 retired in SIX */
-    &ENG_BREAK, &ENG_ACID, &ENG_SERUM, &ENG_M2STAT, &ENG_M2SAW, &ENG_M2SID, &ENG_EMPTY,
- &ENG_TRIO,&ENG_FMINI,&ENG_OBER,&ENG_JUNO,&ENG_CS,
- &ENG_KW_ANALOG,&ENG_KW_CS,
-#if JAZZY_WAVE
- &ENG_KW_WAVE,
-#else
- &ENG_GONE,
-#endif
-&ENG_KW_FM,&ENG_KW_PHASE,&ENG_KW_SYNC,&ENG_KW_KICK,&ENG_KW_GROWL,&ENG_KW_ADD,
-#if JAZZY_RHODES
- &ENG_FRODHES,
-#else
- &ENG_GONE,
-#endif
-&ENG_HORT,&ENG_JCZ,&ENG_JPROPHET,&ENG_S1,&ENG_JHYDRA,&ENG_LXR,
+    &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE,   /* 2..11 */
+    &ENG_FM6,                    /* 12 */
+    &ENG_GONE, &ENG_GONE,                    /* 13, 14 */
+    &ENG_BREAK, &ENG_ACID,       /* 15, 16 */
+    &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE,          /* 17..20 */
+    &ENG_EMPTY,                  /* 21 */
+    &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE,   /* 22..36 */
+    &ENG_HORT,                   /* 37 */
+    &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE, &ENG_GONE,     /* 38..42 */
 };
 
 #include "factory_projection.c"
@@ -133,15 +114,7 @@ static inline uint32_t eng_idx(uint32_t e) { return e < NENGINES ? e : 0u; }
  * at power-on (TRK_DEF: T1..T6 are its first six), then PHASE WHEEL NOISE; was ANALOG FM6 PHASE LOFI VOICE WHEEL
  * NOISE DRUM ANIMAL. PROGRAM CHANGE numbers the sounds in this order too (ui.c midi_pc_poll) */
 static const uint8_t ENGINE_ORDER[NENG_SHOWN] = {
- ENGI_SERUM, ENGI_PHASE, ENGI_LOFI, ENGI_M2STAT, ENGI_M2SAW, ENGI_M2SID, ENGI_ANALOG, ENGI_FM6, ENGI_WHEEL, ENGI_MELO_TRIO, ENGI_FMINI, ENGI_OBER, ENGI_JUNO, ENGI_CS, ENGI_KW_ANALOG, ENGI_KW_CS, 
-#if JAZZY_WAVE
- ENGI_KW_WAVE,
-#endif
- ENGI_KW_FM, ENGI_KW_PHASE, ENGI_KW_SYNC, ENGI_KW_KICK, ENGI_KW_GROWL, ENGI_KW_ADD, 
-#if JAZZY_RHODES
- ENGI_FRODHES,
-#endif
- ENGI_HORT, ENGI_ACID, ENGI_BREAK, ENGI_CZ, ENGI_PROPHET, ENGI_S1, ENGI_HYDRA, ENGI_EMPTY, ENGI_LXR
+ ENGI_ANALOG, ENGI_FM6, ENGI_ACID, ENGI_HORT, ENGI_BREAK, ENGI_EMPTY
 };
 
 /* the engines one can pick (engine 1 only with FELUCCA_FM4), in ENGINE_ORDER: eng_ok(e), the n-th of them
@@ -217,8 +190,8 @@ static const struct {
  * power_sound_of: no DIST CHOR DLY REV send, the effects are the player's to add) */
 #define TRK_PR_VOICE 9u          /* SINGER EN (eng_formant.c FORMANT_PRESETS) */
 #define TRK_PR_ANALOG 14u        /* FAT BASS (eng_analog.c) */
-static const uint8_t TRK_DEF[NPART][3] = {{ENGI_FMINI,1,0},{ENGI_JUNO,1,0},{ENGI_OBER,2,0},
- {ENGI_LOFI,3,0},{ENGI_EMPTY,0,0},{ENGI_EMPTY,0,0}};
+static const uint8_t TRK_DEF[NPART][3] = {{ENGI_ANALOG,1,0},{ENGI_FM6,1,0},{ENGI_ANALOG,2,0},
+ {ENGI_EMPTY,0,0},{ENGI_EMPTY,0,0},{ENGI_EMPTY,0,0}};  /* FLIPERAMA */
 /* DRUM-X (DRUM's first, the factory kit), SINGER EN, CMOS BIRD, BYTEBEAT, FAT BASS, TINE EP */
 /* the parts at power-on through 0.9.8 (the same columns): what an old project's tracks it had no room for load as
  * (project.c proj_new_tracks, PROJ_DEF_SOUND: format 1's tracks 2..4, a 4-track format's T5 / T6): never change it.

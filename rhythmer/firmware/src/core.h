@@ -63,7 +63,7 @@
 #define ENGI_EMPTY 21u           /* append-only: unassigned, no synthesis or voice allocation */
 #define ENGI_FM6 12u
 #define ENGI_DIGITAL 1u          /* reserved without FELUCCA_FM4: never selectable (eng_ok), its sounds load as FM6 */
-#define NENG_SHOWN (31u + JAZZY_RHODES + JAZZY_WAVE)   /* the engines one can pick: PRESETS, the EDIT layer, the editor,
+#define NENG_SHOWN 6u  /* FLIPERAMA: ANALOG FM6 ACID BREAK HORT EMPTY (was 31u + JAZZY_RHODES + JAZZY_WAVE) */   /* the engines one can pick: PRESETS, the EDIT layer, the editor,
                                                 * in the display order of engines.c ENGINE_ORDER (PHYS 9, and in
                                                 * JIANT SAMPLE 4, GRAIN 8, SLICE 13: retired) */
 /* (JIANT 0.6.71) the second core (hal/fm1_multicore.h; fx.c mix_block hands it some synth tracks). MC_CPU(): the core
@@ -269,9 +269,16 @@ static void params_by_count(int16_t *out, const int16_t *in, uint32_t np, const 
  * 27 KB of RAM went to DRUM-X and the effects). Their numbers stay reserved (engines.c ENG_GONE), never offered; a sound
  * of theirs that arrives -- a project, a user preset, the editor -- plays as ANALOG's first preset (SAMPLE's old PERC
  * set as DRUM first: drum_from_perc) */
+/* FLIPERAMA: the JAZZY engines this fork leaves out. Their numbers stay reserved (append-only stores); a sound of
+ * theirs that arrives plays as ANALOG's first preset, like the retired ones */
+static inline int flip_cut(uint32_t e)
+{
+    return e == ENGI_PHASE || e == ENGI_LOFI || e == ENGI_WHEEL || e == ENGI_SERUM || e == ENGI_M2STAT || e == ENGI_M2SAW ||
+           e == ENGI_M2SID || (e >= ENGI_MELO_TRIO && e <= ENGI_FRODHES) || (e >= ENGI_CZ && e <= ENGI_LXR);
+}
 static inline int eng_gone(uint32_t e)
 {
-    return (!JAZZY_WAVE&&e==ENGI_KW_WAVE)||(!JAZZY_RHODES&&e==ENGI_FRODHES)||e == ENGI_DRUM || e == ENGI_VOICE || e == ENGI_NOISE || e == ENGI_ANIMAL || e == ENGI_PHYS || e == ENGI_SAMPLE || e == ENGI_GRAIN || e == ENGI_SLICE || e == ENGI_TRIO;
+    return flip_cut(e) || (!JAZZY_WAVE&&e==ENGI_KW_WAVE)||(!JAZZY_RHODES&&e==ENGI_FRODHES)||e == ENGI_DRUM || e == ENGI_VOICE || e == ENGI_NOISE || e == ENGI_ANIMAL || e == ENGI_PHYS || e == ENGI_SAMPLE || e == ENGI_GRAIN || e == ENGI_SLICE || e == ENGI_TRIO;
 }
 /* (JIANT 0.4) a sound stored before 0.4 -> today's E values, in place: LOFI (3) {.., SWP, VIB, ARP, TONE} -> {.., CUT
  * (its TONE), VIB, BEND 0, MASK 0}; ANALOG (0) KTR -> INT 0 (the key tracking fixed at its old default). Projects
@@ -776,9 +783,9 @@ static song_t song;
 /* Selectable musical machines on any track; default-role indices are boot only. */
 static uint32_t six_role_engine(uint32_t track, uint32_t e) {
  (void)track;
- if(e>=22u&&e<NENGINES)return e;
+ if(e>=22u&&e<NENGINES)return flip_cut(e)?ENGI_ANALOG:e;
  if(e==ENGI_ACID||e==ENGI_BREAK||e==ENGI_EMPTY)return e;
- return e==ENGI_M2STAT||e==ENGI_M2SAW||e==ENGI_M2SID||e==ENGI_SERUM||e==ENGI_PHASE||e==ENGI_LOFI||e==ENGI_ANALOG||e==ENGI_FM6||e==ENGI_WHEEL?e:ENGI_SERUM;
+ return e==ENGI_ANALOG||e==ENGI_FM6?e:ENGI_ANALOG;  /* FLIPERAMA: was the JAZZY synths, fallback SERUM */
 }
 /* BREAK is a project-wide singleton, including inactive tracks. Selection
  * availability is separate from stored-engine validity (project loading). */
