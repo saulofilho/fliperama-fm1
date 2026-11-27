@@ -25,6 +25,12 @@ accent, an envelope, an LFO, a sequencer step. Outside attract mode, no sound me
 Every game, character and level is original. Nothing is taken from an existing game: no characters, levels,
 music or sound effects.
 
+## Website
+
+**[saulofilho.github.io/fliperama-fm1](https://saulofilho.github.io/fliperama-fm1/)** has the six cabinets running in
+your browser: their chips play in Web Audio and their pixel scenes follow every note. The site lives in
+[`site/`](site/), and the Pages workflow publishes it together with the mood board.
+
 ## Mood board
 
 [`docs/moodboard/index.html`](docs/moodboard/index.html) is a playable sketch of the six cabinets. Download it and
